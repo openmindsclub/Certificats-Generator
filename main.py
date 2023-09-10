@@ -104,8 +104,12 @@ def send_emails(name, field, email):
     message['Subject'] = "Summer School Certaficats"
     message['From'] = sender_email
     message['To'] = email
+
     print(email)
-    html_part = MIMEText("<h1>Congratulations, your certificate is ready (final version)</h1>", "html")
+    with open("email.html", "r") as email_html:
+        html_part = MIMEText(email_html.read(), "html")
+
+    print(html_part)
     message.attach(html_part)
     message.attach(part)
 
